@@ -1,0 +1,21 @@
+CREATE TABLE `player` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `surname` varchar(50) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `age` int(11) DEFAULT '0',
+  `gender` int(11) DEFAULT NULL,
+  `avatar` blob,
+  `type` int(11) DEFAULT NULL,
+  `wins` int(11) NOT NULL DEFAULT '0',
+  `loses` int(11) NOT NULL DEFAULT '0',
+  `status` int(11) NOT NULL DEFAULT '0',
+  `game_idx` int(11) DEFAULT NULL,
+  `game_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login_UNIQUE` (`login`),
+  KEY `FK_GAME_idx` (`game_id`,`id`),
+  CONSTRAINT `FK_GAME` FOREIGN KEY (`game_id`) REFERENCES `game` (`id`) ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=cp1251;
